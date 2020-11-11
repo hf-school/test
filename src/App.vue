@@ -64,7 +64,7 @@
 					<el-form ref="numberValidateForm" :model="numberValidateForm" label-position="left" label-width="80px" style="margin: 20px;">
 						<el-form-item label="志愿名称" size="small">
 							<el-col :span="9">
-								<el-input v-model="form.name"></el-input>
+								<el-input v-model="form.name" ></el-input>
 							</el-col>
 						</el-form-item>
 						<el-form-item label="志愿地点" size="small" style="margin-right: 1000px;">
@@ -77,11 +77,11 @@
 							</el-select>
 						</el-form-item>
 						<el-form-item label="志愿时间" size="small">
-							<el-col :span="6">
+							<el-col :span="9">
 								<el-date-picker type="date" placeholder="选择日期" v-model="form.date1" style="width: 100%;"></el-date-picker>
 							</el-col>
-							<el-col class="line" :span="2">--------</el-col>
-							<el-col :span="6">
+							<el-col class="line" :span="9">--------</el-col>
+							<el-col :span="9">
 								<el-time-picker placeholder="选择时间" v-model="form.date2" style="width: 100%;"></el-time-picker>
 							</el-col>
 						</el-form-item>
@@ -117,7 +117,7 @@
 							</el-col>
 						</el-form-item>
 						<el-form-item style="float: left;margin-left: 20px;">
-							<el-button type="primary" @click="submitForm('numberValidateForm')" style="margin-right: 20px;">提交</el-button>
+							<el-button type="primary" @click="submitForm()" style="margin-right: 20px;">提交</el-button>
 							<el-button @click="resetForm('numberValidateForm')" style="margin-left: 20px;">重置</el-button>
 						</el-form-item>
 					</el-form>
@@ -241,15 +241,16 @@
 			onSubmit() {
 				console.log('submit!');
 			},
-			submitForm(formName) {
-				this.$refs[formName].validate((valid) => {
-					if (valid) {
-						alert('submit!');
-					} else {
-						console.log('error submit!!');
-						return false;
-					}
-				});
+			submitForm() {
+				console.log(this.form.name)
+				console.log(this.form.region)
+				console.log(this.form.date1)
+				console.log(this.form.date2)
+				console.log(this.numberValidateForm.number)
+				console.log(this.form.stu_name)
+				console.log(this.form.class_name)
+				console.log(this.numberValidateForm.age)
+				
 			},
 			resetForm(formName) {
 				this.$refs[formName].resetFields();
